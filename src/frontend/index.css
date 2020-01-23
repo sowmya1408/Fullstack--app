@@ -2,3 +2,16 @@
 * {
   font-family: 'Montserrat', sans-serif;
 }
+
+* {
+    margin: 0;
+    padding:0;
+    list-style: none;
+}
+
+.mealsList {
+    border: 1px solid black;
+    border-radius: 4px;
+    display: flex;
+    height: 100px;
+}

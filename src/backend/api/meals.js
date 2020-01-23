@@ -1,15 +1,33 @@
 const express = require("express");
-const app = express();
-const router = express.Router();
-const pool = require("./../database");
+//const app = express();
+const routerMeals = express.Router();
+const connection = require("./../database");
 
-router.get("/", (request, response) => {
-  pool.query("some sql query", function(error, results, fields) {
-    response.json({});
-    // error will be an Error if one occurred during the query
+
+routerMeals.get("/", (req, res) => {
+    connection.query("select * from meal", function(err, results, fields) {
+        if(err){
+            res.send(err);
+        }
+        res.json(results);
+      })
+      // error will be an Error if one occurred during the query
     // results will contain the results of the query
     // fields will contain information about the returned results fields (if any)
   });
-});
 
-module.exports = router;
+  routerMeals.get('/:id',(req,res) => {
+    const id = parseInt(req.params.id);
+    console.log(id)
+  
+    connection.query("select * from meal WHERE id = ?",[id],
+    (err, results, fields) => {
+        if(err) {
+            return res.send(err);
+        }
+        res.json(results);
+    })
+  })
+  
+
+module.exports = routerMeals;
