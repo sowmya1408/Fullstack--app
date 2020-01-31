@@ -1,17 +1,79 @@
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+
 * {
   font-family: 'Montserrat', sans-serif;
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+
 }
 
-* {
-    margin: 0;
-    padding:0;
-    list-style: none;
+body {
+    background-color: rgb(245, 243, 240);
 }
 
-.mealsList {
-    border: 1px solid black;
-    border-radius: 4px;
+
+header {
     display: flex;
-    height: 100px;
+    justify-content: space-between;
+    color: rgb(12, 100, 12);  
 }
+
+.logo-heading {
+    font-family: 'Dancing Script', cursive;
+    border: 1px solid rgba(46, 12, 12, 0.185);
+}
+
+.logo-icons {
+    height: 50px;
+    width: 50px
+}
+
+.container {
+    padding: 0;
+}
+
+img.home-image {
+    width: 100%;
+}
+
+
+ .card {
+     width: 18rem;
+     margin: 20px;
+ }
+
+ 
+
+ .addcolor {
+    color: rgb(12, 100, 12);  
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+ }
+
+ .addColorToText {
+    color: rgb(12, 100, 12);  
+ }
+
+ #root {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+ }
+
+ .form-control {
+    width: 300px;
+  }
+ .reservationForm {
+    margin: 50px;
+ }
+
+ .singleMealPage {
+     display: flex;
+     justify-content: center;
+ }
+
+

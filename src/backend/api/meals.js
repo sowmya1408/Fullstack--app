@@ -1,5 +1,4 @@
 const express = require("express");
-//const app = express();
 const routerMeals = express.Router();
 const connection = require("./../database");
 
@@ -17,9 +16,7 @@ routerMeals.get("/", (req, res) => {
   });
 
   routerMeals.get('/:id',(req,res) => {
-    const id = parseInt(req.params.id);
-    console.log(id)
-  
+    const id = parseInt(req.params.id);  
     connection.query("select * from meal WHERE id = ?",[id],
     (err, results, fields) => {
         if(err) {
@@ -28,6 +25,18 @@ routerMeals.get("/", (req, res) => {
         res.json(results);
     })
   })
+
+
+  routerMeals.post('/add-meal', (req, res) => {
+    const meal = req.body;
+    connection.query("INSERT INTO meal SET ?", meal, (error, results, fields) => {
+      if(error) {
+          return res.send(error)
+      } else {
+          res.json(results)
+      }
+    })
+})
   
 
 module.exports = routerMeals;
