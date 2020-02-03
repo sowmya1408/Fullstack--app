@@ -19,7 +19,7 @@ const path = require("path");
 //Serve the built client html
 const buildPath = path.join(__dirname, "../../dist");
 app.use(express.static(buildPath)); 
-
+app.use(express.static('public'));
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 // Parse JSON bodies (as sent by API clients)
