@@ -18,7 +18,7 @@ const htmlHome = `
 <div class="small-circle"></div>
 <div class="small-circle"></div>
 <div class="medium-circle"></div>
- <p class="navPara">"THINKING TO BE A" <span class="host-button"><a herf="#">HOST!</a></span></p>
+ <p class="navPara">‟THINKING TO BE A‟ <span class="host-button"><a href="/createmeal" target="_blank ">HOST!</a></span></p>
  </div>
  </div>
 <img class="homePageImg" src="../assets/homePage.jpg" alt="home meal image">
@@ -50,7 +50,7 @@ function renderAllMeals() {
             mealDataCopy.review = reviewsData.filter(review => review.meal_Id === meal.id)
             const div = document.createElement('div');
 				div.classList.add('card');
-				const dateToLocalString = new Date(mealDataCopy.when).toLocaleDateString();
+				const dateToLocalString = new Date(mealDataCopy.dayOfMeal).toLocaleDateString();
             //	const timeToLocalString = new Date(meal.when).toLocaleTimeString();
             // For the review ratings & filling the stars
             let starTotal = 5;

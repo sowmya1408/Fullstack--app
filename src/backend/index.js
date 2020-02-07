@@ -6,6 +6,8 @@ const reviewsRouter = require("./api/reviews");
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+
 
 const router = express.Router();
 const dotenv = require("dotenv");

@@ -26,14 +26,50 @@ routerMeals.get("/", (req, res) => {
     })
   })
 
+  class Meal {
+    constructor(mealObj) {
+      if(!mealObj.title)
+        throw "Meals need to have title";
+         else 
+        this.title = mealObj.title;
+      if(!mealObj.description)
+        throw "Meals need to have description";
+        else
+        this.description = mealObj.description;
+      if(!mealObj.location)
+        throw "Meals need to have location";
+        else
+        this.location = mealObj.location;
+      if(!mealObj.dayOfMeal)
+        throw "Meals need to have dayOfMeal";
+        else
+        this.description = mealObj.dayOfMeal;
+      if(!mealObj.max_reservations)
+        throw "Meals need to have max-reservations";
+        else
+        this.description = mealObj.max_reservations;
+      if(!mealObj.price)
+        throw "Meals need to have price";
+        else
+        this.description = mealObj.price;
+       if(!mealObj.img)
+       throw "Meals need to have img-url"; 
+    } 
+  }
 
   routerMeals.post('/add-meal', (req, res) => {
-    const meal = req.body;
+    let meal;
+    try {
+      meal = new Meal (req.body);
+      console.log(meal);
+    } catch (e) {
+      return res.json(e);
+    }
     connection.query("INSERT INTO meal SET ?", meal, (error, results, fields) => {
       if(error) {
           return res.send(error)
       } else {
-          res.json(results)
+          res.json("Added meals successfully")
       }
     })
 })

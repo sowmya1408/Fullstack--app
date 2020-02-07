@@ -14,14 +14,56 @@ routerReservations.get('/', (req, res) => {
     })
 })
 
+routerReservations.get('/:id',(req,res) => {
+  const id = parseInt(req.params.id);  
+  connection.query("select * from reservation WHERE mealId = ?",[id],
+  (err, results, fields) => {
+      if(err) {
+          return res.send(err);
+      }
+      res.json(results);
+  })
+})
+
+class Reservation {
+    constructor(reservationObj) {
+      if(!reservationObj.name)
+        throw "reservation need to have name";
+         else 
+        this.name = reservationObj.name;
+      if(!reservationObj.phone)
+        throw "reservation need to have phone number";
+        else
+        this.phone = reservationObj.phone;
+      if(!reservationObj.email)
+        throw "reservation need to have email";
+        else
+        this.email = reservationObj.email;
+    if(!reservationObj.mealId)
+        throw "reservation need to have mealId";
+        else
+        this.mealId = reservationObj.mealId;
+
+    if(!reservationObj.numberOfGuest)
+        throw "reservation need to have numberOfGuest";
+        else
+        this.numberOfGuest = reservationObj.numberOfGuest;
+    } 
+  }
+
 routerReservations.post('/add-reservation', (req, res) => {
-    const  reservation = req.body;
-    console.log(reservation);
+    let reservation;
+     try {
+        reservation = new Reservation (req.body);
+        console.log(reservation);
+      } catch (e) {
+        return res.json(e);
+      }
     connection.query("INSERT INTO reservation SET ?", reservation, (error, results, fields) => {
       if(error) {
           return res.send(error)
       } else {
-          res.json(results)
+          res.json("Reservation added successfully")
       }
     })
 }) 

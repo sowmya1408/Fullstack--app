@@ -218,14 +218,19 @@ div.container.logoNav {
  .form-control {
     width: 300px;
   }
- .reservationForm {
+ #reservationForm {
     margin: 50px;
  }
 
  .singleMealPage {
      display: flex;
      justify-content: center;
+     flex-wrap: wrap;
  }
 
-  
+  #message {
+      color: rgb(24, 100, 58);
+      font-size: 25px;
+  }
+
 

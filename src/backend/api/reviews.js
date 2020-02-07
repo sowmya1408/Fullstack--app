@@ -12,6 +12,17 @@ routerReviews.get('/', (req, res) => {
     })
 })
 
+routerReviews.get('/:id',(req,res) => {
+    const id = parseInt(req.params.id);  
+    connection.query("select * from review WHERE meal_Id = ?",[id],
+    (err, results, fields) => {
+        if(err) {
+            return res.send(err);
+        }
+        res.json(results);
+    })
+  })
+
 
 routerReviews.post('/add-review', (req, res) => {
     const review = req.body;
