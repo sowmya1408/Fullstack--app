@@ -1,11 +1,11 @@
 
 const express = require("express");
 const routerReservations = express.Router();
-const connection = require("./../database");
+const pool = require("./../database");
 const bodyParser = require("body-parser");
 
 routerReservations.get('/', (req, res) => {
-    connection.query('select * from reservation', (error, results, fields) => {
+  pool.query('select * from reservation', (error, results, fields) => {
         if(error) {
             return res.send(error)
         } else {
@@ -16,7 +16,7 @@ routerReservations.get('/', (req, res) => {
 
 routerReservations.get('/:id',(req,res) => {
   const id = parseInt(req.params.id);  
-  connection.query("select * from reservation WHERE mealId = ?",[id],
+  pool.query("select * from reservation WHERE mealId = ?",[id],
   (err, results, fields) => {
       if(err) {
           return res.send(err);
@@ -59,7 +59,7 @@ routerReservations.post('/add-reservation', (req, res) => {
       } catch (e) {
         return res.json(e);
       }
-    connection.query("INSERT INTO reservation SET ?", reservation, (error, results, fields) => {
+      pool.query("INSERT INTO reservation SET ?", reservation, (error, results, fields) => {
       if(error) {
           return res.send(error)
       } else {
