@@ -1,7 +1,8 @@
 
 const htmlForm = `
+<img class="homePageImg" src="../assets/createMeal.jpg" alt="meal Image" />
 <p id="message"></p>
-<form>
+<form class="formAlignment">
 <h1 class="addColorToText">Create Meal form</h1>
 <div class="form-group">
   <label for="inputTitle">Title&#x2A;</label>
@@ -17,7 +18,7 @@ const htmlForm = `
    </div>
 <div class="form-group">
 <label for="inputdayOfMeal">dayOfMeal&#x2A;</label>
-<input class="form-control" type="text" name="dayOfMeal" placeholder="When" id="inputdayOfMeal">
+<input class="form-control" type="datetime-local" name="dayOfMeal" placeholder="DayOfMeal" id="inputdayOfMeal">
 </div>  
 <div class="form-group">
 <label for="inputMax_reservation">Max Reservation&#x2A;</label>

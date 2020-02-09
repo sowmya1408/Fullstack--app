@@ -43,17 +43,19 @@ routerMeals.get("/", (req, res) => {
       if(!mealObj.dayOfMeal)
         throw "Meals need to have dayOfMeal";
         else
-        this.description = mealObj.dayOfMeal;
+        this.dayOfMeal = mealObj.dayOfMeal;
       if(!mealObj.max_reservations)
         throw "Meals need to have max-reservations";
         else
-        this.description = mealObj.max_reservations;
+        this.max_reservations = mealObj.max_reservations;
       if(!mealObj.price)
         throw "Meals need to have price";
         else
-        this.description = mealObj.price;
+        this.price = mealObj.price;
        if(!mealObj.img)
        throw "Meals need to have img-url"; 
+       else
+        this.img = mealObj.img;
     } 
   }
 

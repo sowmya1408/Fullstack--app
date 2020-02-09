@@ -15,8 +15,6 @@ const htmlHome = `
  <img class ="meal-icon" src="../assets/createMeal.svg" alt="create meal image">
 </nav>
 <div class="small-circle"></div>
-<div class="small-circle"></div>
-<div class="small-circle"></div>
 <div class="medium-circle"></div>
  <p class="navPara">‟THINKING TO BE A‟ <span class="host-button"><a href="/createmeal" target="_blank ">HOST!</a></span></p>
  </div>
@@ -65,6 +63,9 @@ function renderAllMeals() {
                ratings = sum / (mealDataCopy.review).length;
                starPercentage = ratings/starTotal * 31.25;
                starPercentageRounded = `${Math.round(starPercentage)}%`
+            } else if((mealDataCopy.review).length === 0 ){
+               starPercentageRounded = 0
+               ratings = `no ratings`
             } else {
                ratings = mealDataCopy.review[0].numberOfStars;
                starPercentage = ratings/starTotal * 31.25;
@@ -77,7 +78,7 @@ function renderAllMeals() {
    <p class="card-text">${mealDataCopy.description}</p>
    <div class="stars-outer">
    <div class="stars-inner" style="width: ${starPercentageRounded}"></div>
-   <span class="number-rating">rating: ${ratings}</span><span class="mealIconText"><i class="far fa-user"></i>${mealDataCopy.max_reservations}</span>
+   <span class="number-rating">rating: ${ratings}</span>
   </div>
   <p class="card-text"><i class="far fa-calendar-alt"></i><span class="mealIconText">${dateToLocalString}</span>
   <span class="mealIconText"><i class="fas fa-map-marker-alt"></i>${mealDataCopy.location}</span>

@@ -58,22 +58,20 @@ div.container.logoNav {
     height: 4px;
     width: 4px;
     border: 1px solid rgb(14, 6, 6);
-    margin-right: 5px;;
 }
 
 .medium-circle {
     height: 6px;
     width: 6px;
     border: 1px solid rgb(14, 6, 6);
-    margin-right: 5px;
 }
 
 .navPara {
     border: 1px dotted rgb(5, 4, 4);
-    width: 100px;
     height: 80px;
     font-weight: 900;
     text-align: center;
+    overflow: scroll;
 }   
 
 .host-button > a {
@@ -98,6 +96,7 @@ div.container.logoNav {
 .homePageImg{
     box-shadow: 7px 10px 20px #000;
     width: 100%;
+    margin-bottom: 15px;
 }
 
  .card {
@@ -203,6 +202,12 @@ div.container.logoNav {
     border-color: rgb(12, 100, 12);
  }
 
+ .formAlignment {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+
  .footerPara {
     display: flex;
     justify-content: space-evenly;
@@ -228,9 +233,15 @@ div.container.logoNav {
      flex-wrap: wrap;
  }
 
+ .reviewSection {
+     border: 1px solid rgb(146, 55, 55);
+     margin-top: 10px;
+ }
+
   #message {
       color: rgb(24, 100, 58);
       font-size: 25px;
+      text-align: center;
   }
 
 

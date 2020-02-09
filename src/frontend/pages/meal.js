@@ -9,7 +9,7 @@ const htmlMeal = `
     </form>
     </section>
   </section>
-  <section id="reviews">
+  <section class="addColorToText reviewSection" id="reviews">
   Reviews
  </section>
 
@@ -34,7 +34,7 @@ function fetchsingleMeal(id) {
      const singleMealdiv = document.getElementById('getSingleMeal');
     const singleMeal = document.createElement('div');
     singleMeal.classList.add('col-md');
-    const dateToLocalString = new Date(meal[0].when).toLocaleDateString();
+    const dateToLocalString = new Date(meal[0].dayOfMeal).toLocaleDateString();
     let sumOfReservations = 0;
     if(reservations.length > 1){
       for(let i = 0; i < reservations.length; i++){
@@ -43,11 +43,13 @@ function fetchsingleMeal(id) {
     } else {
       sumOfReservations = reservations[0].numberOfGuest;
     }
-
-   const availableReservations = meal[0].max_reservations -  sumOfReservations;
-
-
-			singleMeal.innerHTML = `
+     let availableReservations;
+     if(availableReservations <= 0) {
+       availableReservations = 0;
+     }else {
+      availableReservations = meal[0].max_reservations -  sumOfReservations;
+     }
+  			singleMeal.innerHTML = `
       <h1 class="addColorToText">${meal[0].title}</h1>
       <div class="card mb-3">
         <img src="${meal[0].img}" class="card-img-top" alt="Meal Image">
@@ -63,8 +65,9 @@ function fetchsingleMeal(id) {
   singleMealdiv.appendChild(singleMeal);
 
   const reservationForm = document.querySelector('form');
-  if(availableReservations === 0){
+  if(availableReservations <= 0){
     reservationForm.innerHTML = `Sorry!! there are no more available reservation for this meal`
+    availableReservations = 0;
   } else {
     reservationForm.innerHTML = 
     ` <h1 class="addColorToText">Reservation form</h1>
@@ -126,7 +129,6 @@ function fetchsingleMeal(id) {
   } 
   const reviewSection = document.getElementById('reviews');
   const reviewlist = document.createElement('ul');
-  //const list = document.createElement('li');
   reviewlist.innerHTML = '';
   if(reviews.length > 1){
     for(let i = 0; i < reviews.length; i++){
@@ -135,6 +137,8 @@ function fetchsingleMeal(id) {
       `<li>* ${reviews[i].content}</li>
       `;
     }
+  } else if (reviews.length === 0) {
+    reviewlist.innerHTML = `<li>No reviews available</li>`
   } else {
     reviewlist.innerHTML = 
     `    <li>* ${reviews[0].content}<li>
